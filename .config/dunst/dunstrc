@@ -1,0 +1,92 @@
+[global]
+force_xwayland = false
+layer = overlay
+
+# don't try to figure out when I'm idle
+idle_threshold = 0
+
+# which screen to display notifications on
+follow = keyboard
+
+enable_posix_regex = true
+
+# sort by urgency
+sort = true
+
+width = (64, 512)
+height = 128
+corner_radius = 0
+frame_width = 0
+separator_height = 2
+separator_color = "#00000000"
+origin = bottom-left
+offset = 0x0
+
+notification_limit = 8
+indicate_hidden = true
+
+stack_duplicates = true
+hide_duplicate_count = false
+
+progress_bar = true
+progress_bar_height = 8
+progress_bar_frame_width = 0
+progress_bar_min_width = 64
+progress_bar_max_width = 512
+progress_bar_horizontal_alignment = left
+
+font = Noto Sans 8, SansSerif 8
+line_height = 0
+
+padding = 2
+horizontal_padding = 2
+text_icon_padding = 2
+alignment = left
+vertical_alignment = top
+icon_position = left
+
+format = "<b>[%a] %s %p</b>\n%b"
+markup = no
+ignore_newline = no
+show_indicators = true
+show_age_threshold = -1
+ellipsize = end
+
+timeout = 10
+
+sticky_history = true
+history_length = 16
+
+dmenu = /usr/bin/bemenu -p dunst:
+browser = /usr/bin/xdg-open
+always_run_script = true
+
+title = dunst
+class = dunst
+
+mouse_left_click = do_action, close_current
+mouse_middle_click = close_current
+mouse_right_click = none
+ignore_dbusclose = false
+
+
+
+[experimental]
+enable_recursive_icon_lookup = true
+icon_theme = breeze-dark, Adwaita
+icon_size = 32
+
+
+
+[urgency_low]
+background = "#00007fbf"
+foreground = "#bfbfbf"
+
+[urgency_normal]
+background = "#001f7fbf"
+foreground = "#ffffff"
+
+[urgency_critical]
+background = "#7f1f00bf"
+foreground = "#ffffff"
+timeout = 0

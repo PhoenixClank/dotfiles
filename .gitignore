@@ -1,0 +1,27 @@
+# first, exclude everything
+/*
+
+# include important files
+!.gitignore
+!README.md
+!LICENSE
+
+# include dotfiles in home folder
+!.zprofile
+!.zshenv
+!.zshrc
+
+# include config folder
+!.config/
+
+# exclude everything in config folder
+.config/*
+
+# include the following subdirectories of the config folder
+!.config/dunst/
+!.config/nano/
+!.config/qtile/
+!.config/swaylock/
+
+# exclude general junk
+**/__pycache__/

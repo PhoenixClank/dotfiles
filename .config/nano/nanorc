@@ -1,0 +1,9 @@
+set autoindent
+set indicator
+set linenumbers
+set nonewlines
+set smarthome
+set tabsize 4
+
+include "/usr/share/nano/*.nanorc"
+include "/usr/share/nano-syntax-highlighting/*.nanorc"

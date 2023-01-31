@@ -78,11 +78,11 @@ def brightness(qtile, *, up):
 		f.truncate(0)
 		print(int(bright_next), file=f)
 
-		bright_notif_id = mydbus.notify("backlight brightness", hints={'value': Variant('u', int(100 * (bright_next - bright_min) / (bright_max - bright_min)))}, expire_timeout=1500, replaces_id=bright_notif_id)
+		bright_notif_id = mydbus.notify("backlight brightness", hints={'value': Variant('u', int(100 * bright_next / BRIGHT_MAX))}, expire_timeout=1500, replaces_id=bright_notif_id)
 
 
-wm = 'mod1' # control qtile with Alt+X
-launch = 'mod4' # quick-launch stuff with Win+Y
+wm = 'mod1'  # control qtile with Alt+X
+launch = 'mod4'  # quick-launch stuff with Win+Y
 
 keys = [
 	Key([launch], 't', lazy.spawn('kitty'), desc="[T]erminal emulator"),

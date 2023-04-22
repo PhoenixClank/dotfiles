@@ -11,6 +11,11 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+# fancy prompt
+[[ "$COLORTERM" == (24bit|truecolor) || "${terminfo[colors]}" -eq '16777216' ]] || zmodload zsh/nearcolor
+PROMPT="[%B%(?.%F{green}.%F{red})%3<<  %?%<<%f%b]%B%F{blue}%~%f%b%(!.\#.\$) "
+#RPROMPT="%B%(?.%F{green}.%F{red})%?%f%b"
+
 setopt auto_cd
 setopt hist_save_no_dups
 setopt share_history
@@ -49,10 +54,6 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
 	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
-
-# fancy prompt
-[[ "$COLORTERM" == (24bit|truecolor) || "${terminfo[colors]}" -eq '16777216' ]] || zmodload zsh/nearcolor
-PROMPT="%B%(?..%F{red}%?%f )%F{blue}%~%f%b%(!.\#.\$) "
 
 # helpful help
 autoload -Uz run-help run-help-git

@@ -46,7 +46,7 @@ if $run_further && $online ; then
 fi
 
 if $run_further ; then
-	if (( $(date "+%d") < 5 )) ; then
+	if (( $(date "+%d") < 6 )) ; then
 		print -n 0 > lenov_state
 	elif $online && [[ $(< lenov_state) != 2 ]] ; then
 		./lenov_load.py

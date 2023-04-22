@@ -1,3 +1,4 @@
+from glob import glob
 import random
 import subprocess
 import time
@@ -140,6 +141,8 @@ floating_layout = layout.Floating(float_rules=[
 	*layout.Floating.default_float_rules,
 	Match(func=lambda win: bool(win.is_transient_for())),
 	Match(wm_class='zenity'),
+	Match(wm_class='org.keepassxc.KeePassXC'),
+	Match(wm_class='pavucontrol-qt'),
 	Match(wm_class='firefox', title="Firefox — Sharing Indicator"),
 	Match(wm_class='XEyes', title="xeyes"),
 ], border_width=2, border_focus='#ff7f00', border_normal='#bf1f00')
@@ -293,27 +296,28 @@ screens = [
 			mywidgets.MprisAllPlayersController(notify=False),  # TODO: mouse click callbacks
 			widget.StatusNotifier(),  # TODO: why does Signal not show up?
 			mywidgets.vertical_stacking(widget.CurrentLayout),
-		], 24, background='#000000bf'),
-		wallpaper="~/Pictures/Games/FAST Racing NEO/" + random.choice([
-			"Avalanche Valley.jpg",
-			"Caldera Post.jpg",
-			"Cameron Crest.jpg",
-			"Daitoshi Station.jpg",
-			"Iceland.png",
-			"Kenshu Jungle.jpg",
-			"keyshot (NEO).jpg",
-			"Kuiper Belt 1.png",
-			"Kuiper Belt 2.png",
-			"Mori Park.png",
-			"Mueller Pacific.jpg",
-			"New Zendling.png",
-			"Pyramid Valley.png",
-			"Scorpio Circuit.jpg",
-			"Sendai Outpost.jpg",
-			"Sunahara Plains.jpg",
-			"Tepaneca Vale.jpg",
-			"Zvil Raceway.jpg",
-		]),
+		], 24, background=['#000000bf', '#0000003f']),
+		wallpaper=random.choice(glob("Pictures/**/* (???? × ????).png", recursive=True)),
+		#wallpaper="Pictures/Games/FAST Racing NEO/" + random.choice([
+		#	"Avalanche Valley.jpg",
+		#	"Caldera Post.jpg",
+		#	"Cameron Crest.jpg",
+		#	"Daitoshi Station.jpg",
+		#	"Iceland.png",
+		#	"Kenshu Jungle.jpg",
+		#	"keyshot (NEO).jpg",
+		#	"Kuiper Belt 1.png",
+		#	"Kuiper Belt 2.png",
+		#	"Mori Park.png",
+		#	"Mueller Pacific.jpg",
+		#	"New Zendling.png",
+		#	"Pyramid Valley.png",
+		#	"Scorpio Circuit.jpg",
+		#	"Sendai Outpost.jpg",
+		#	"Sunahara Plains.jpg",
+		#	"Tepaneca Vale.jpg",
+		#	"Zvil Raceway.jpg",
+		#]),
 		wallpaper_mode='fill',
 	),
 	Screen(
@@ -322,7 +326,7 @@ screens = [
 			mywidgets.VGroupBox(),
 			mywidgets.vertical_stacking(widget.CurrentLayout),
 		], 24, background='#000000bf'),
-		wallpaper="~/Pictures/Games/Pokémon/fanart/Lenov/" + random.choice([
+		wallpaper="Pictures/fanart/_Games/Pokémon/_Lenov/" + random.choice([
 			"Shizu the Ninetails/lying (4096 × 2304).png",
 			"Xiba the Gardevoir goddess/goddess (5328 × 2997).png",
 			"Xiba the Gardevoir goddess/kirlia (4096 × 2304).png",

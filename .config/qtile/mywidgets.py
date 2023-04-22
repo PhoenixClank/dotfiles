@@ -317,7 +317,7 @@ class VGroupBox(base._Widget):
 		hook.subscribe.addgroup(self.hook_response)
 		hook.subscribe.setgroup(self.hook_response)
 		hook.subscribe.delgroup(self.hook_response)
-		#hook.subscribe.changegroup(self.hook_response) # TODO: gets called when a group's label changes
+		#hook.subscribe.changegroup(self.hook_response)  # TODO: gets called when a group's label changes
 		hook.subscribe.client_managed(self.hook_response)
 		hook.subscribe.client_urgent_hint_changed(self.hook_response)
 		hook.subscribe.client_killed(self.hook_response)
@@ -357,8 +357,8 @@ class BetterBattery(base._TextBox, AsyncMixin):
 		('format_widget', "{percent:.0f}%", "format text to display in widget"),
 		('format_notif', "", "format text to display in notification"),
 		('critical_percent', 5, "percentage (0–100) where charge is considered critical"),
-		('low_percent', 15, "percentage (0–100) where charge is considered low"),
-		('high_percent', 90, "percentage (0–100) where charge is considered high"),
+		('low_percent', 20, "percentage (0–100) where charge is considered low"),
+		('high_percent', 85, "percentage (0–100) where charge is considered high"),
 		('foreground_low', '#ff7f00', "font color to use when charge is low"),
 		('foreground_high', '#007fff', "font color to use when charge is high"),
 		('hibernate_critical', True, "whether to hibernate (suspend-to-disk) when charge is critical"),
@@ -379,7 +379,7 @@ class BetterBattery(base._TextBox, AsyncMixin):
 		self.timeout_add_async(0, self.update_async())
 
 	async def update_async(self):
-		"""TODO: ditch psutil, do async file I/O on /sys/class/battery/…"""
+		# TODO: ditch psutil, do async file I/O on /sys/class/battery/…
 		if self._fg is None: self._fg = self.foreground
 		res = psutil.sensors_battery()
 		if res.percent <= self.critical_percent and not res.power_plugged and self.hibernate_critical:
@@ -522,13 +522,13 @@ class MprisAllPlayersController(base._Widget, AsyncMixin):
 		metadata = defaultdict(lambda: self.metadata_fallback_value, [(key.replace(':', '->'), variant.value) for (key, variant) in metadata.items()] + [('widget->playername', displayname)])
 		await self._if_notif.call_notify(
 			displayname if self.notif_appname_is_playername else "qtile",
-			0, # replaces_id
-			'', # TODO: icon_name
+			0,  # replaces_id
+			'',  # TODO: icon_name
 			self.notif_format_title.format_map(metadata),
 			self.notif_format_body.format_map(metadata),
-			[], # TODO: actions
-			{}, # hints
-			-1 # expire_timeout
+			[],  # TODO: actions
+			{},  # hints
+			-1,  # expire_timeout
 		)
 
 	def draw(self):

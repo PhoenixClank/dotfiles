@@ -199,7 +199,7 @@ class UnsavedChanges(widget.Image):
 		hook.subscribe.client_name_updated(self.hook_response)
 
 	def hook_response(self, *args, **kwargs):
-		self.cmd_update('~/Pictures/archlinux-logo-ff7f00.svg' if self.qtile.current_window and "*" in self.qtile.current_window.name else '~/Pictures/archlinux-logo-007fff.svg')
+		self.cmd_update('~/Pictures/archlinux-logo-ff7f00.svg' if self.qtile.current_window and "*" in self.qtile.current_window.name and 'firefox' not in self.qtile.current_window.get_wm_class() else '~/Pictures/archlinux-logo-007fff.svg')
 
 
 class AnalogClock(base._Widget, base.PaddingMixin):

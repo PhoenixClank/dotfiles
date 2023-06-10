@@ -1,6 +1,7 @@
 #!/usr/bin/zsh
 
 systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY
 
 function run-once {
 	pgrep "$1" > /dev/null || $@
@@ -10,7 +11,5 @@ function run-once {
 run-once fcitx5 > .local/share/qtile/fcitx5.run 2>&1 &
 run-once dunst > .local/share/qtile/dunst.run 2>&1 &
 run-once keepassxc &
-run-once thunderbird > .local/share/qtile/thunderbird.run 2>&1 &
-
-# fucking piece of bullcrap crashes every few seconds
-#run-once signal-desktop --ozone-platform=wayland --enable-features=WebRTCPipeWireCapturer > .local/share/qtile/signal.run 2>&1 &
+run-once thunderbird > .local/share/qtile/thunderbird.run 2>&1 &  # TODO: replace with something that can run without a window and use the systray
+run-once signal-desktop --use-tray-icon --ozone-platform=wayland --enable-features=WebRTCPipeWireCapturer > .local/share/qtile/signal.run 2>&1 &

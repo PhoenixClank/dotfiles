@@ -11,16 +11,19 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-# fancy prompt
+
 [[ "$COLORTERM" == (24bit|truecolor) || "${terminfo[colors]}" -eq '16777216' ]] || zmodload zsh/nearcolor
-PROMPT="[%B%(?.%F{green}.%F{red})%3<<  %?%<<%f%b]%B%F{blue}%~%f%b%(!.\#.\$) "
-#RPROMPT="%B%(?.%F{green}.%F{red})%?%f%b"
+
+PS1="[%B%(?.%F{green}.%F{red})%3<<  %?%<<%f%b]%B%F{blue}%~%f%b%(!.\#.\$) "
+PS2="%F{black}%~%F{green}%5<<     %1_%<<%f> "
+
 
 setopt auto_cd
 setopt hist_save_no_dups
 setopt share_history
 
 zstyle ':completion:*' menu select
+
 
 # key binding
 typeset -g -A key

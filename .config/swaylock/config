@@ -1,6 +1,6 @@
 daemonize
 
-image=~/Pictures/fanart/Arch-tan – Ravioli 2.png
+image=~/Pictures/fanart/Arch-tan hacking – Ravimo 2.png
 scaling=fit
 
 hide-keyboard-layout
@@ -10,7 +10,7 @@ indicator-thickness=32
 
 inside-color=00000000
 inside-clear-color=0000003f
-inside-caps-lock-color=00000000
+inside-caps-lock-color=0000003f
 inside-ver-color=0000003f
 inside-wrong-color=0000003f
 
@@ -28,6 +28,6 @@ separator-color=00000000
 
 text-color=00000000
 text-clear-color=bfbfbf
-text-caps-lock-color=00000000
+text-caps-lock-color=bfbfbf
 text-ver-color=bfbfbf
 text-wrong-color=ff7f00

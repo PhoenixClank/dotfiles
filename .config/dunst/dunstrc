@@ -14,13 +14,13 @@ enable_posix_regex = true
 sort = true
 
 width = (64, 512)
-height = 128
+#height = 128
 corner_radius = 0
 frame_width = 0
 separator_height = 2
 separator_color = "#00000000"
 origin = bottom-left
-offset = 0x0
+offset = (0, 0)
 
 notification_limit = 8
 indicate_hidden = true
@@ -44,6 +44,8 @@ text_icon_padding = 2
 alignment = left
 vertical_alignment = top
 icon_position = left
+enable_recursive_icon_lookup = true
+icon_theme = breeze-dark, Adwaita
 
 format = "<b>[%a] %s %p</b>\n%b"
 markup = no
@@ -68,14 +70,6 @@ mouse_left_click = do_action, close_current
 mouse_middle_click = close_current
 mouse_right_click = none
 ignore_dbusclose = false
-
-
-
-[experimental]
-enable_recursive_icon_lookup = true
-icon_theme = breeze-dark, Adwaita
-icon_size = 32
-
 
 
 [urgency_low]

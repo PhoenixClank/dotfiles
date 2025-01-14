@@ -19,9 +19,20 @@
 
 # include the following subdirectories of the config folder
 !.config/dunst/
-!.config/nano/
+!.config/nvim/
 !.config/qtile/
 !.config/swaylock/
+
+# but exclude this compiled binary
+.config/qtile/autoreload
+
+# include other Neovim configuration like this?
+!.local/
+.local/*
+!.local/share/
+.local/share/*
+!.local/share/nvim/
+.local/share/nvim/.netrwhist
 
 # exclude general junk
 **/__pycache__/

@@ -7,9 +7,10 @@ function run-once {
 	pgrep "$1" > /dev/null || $@
 }
 
-#run-once kanshi &
+run-once .config/qtile/autoreload &
+run-once kanshi &
 run-once fcitx5 > .local/share/qtile/fcitx5.run 2>&1 &
 run-once dunst > .local/share/qtile/dunst.run 2>&1 &
-run-once keepassxc &
+run-once keepassxc &  # TODO: replace with something that doesn't require polkit
 run-once thunderbird > .local/share/qtile/thunderbird.run 2>&1 &  # TODO: replace with something that can run without a window and use the systray
-run-once signal-desktop --use-tray-icon --ozone-platform=wayland --enable-features=WebRTCPipeWireCapturer > .local/share/qtile/signal.run 2>&1 &
+run-once signal-desktop --start-in-tray --ozone-platform=wayland --enable-features=WebRTCPipeWireCapturer > .local/share/qtile/signal.run 2>&1 &

@@ -9,9 +9,11 @@ import traceback as tb
 
 from dbus_next import Variant
 from dbus_next.aio import MessageBus
+
 import psutil
 
 from libqtile import bar, hook, widget
+from libqtile.command.base import expose_command
 from libqtile.log_utils import logger
 from libqtile.widget import base
 
@@ -45,6 +47,7 @@ def vertical_short(cls, **config):
 			)
 			self.drawer.draw(offsetx=self.offsetx, offsety=self.offsety, width=self.width, height=self.height)
 
+		@expose_command()
 		def update(self, text):
 			if self.text == text:
 				return
@@ -83,7 +86,7 @@ def vertical_stacking(cls, **config):
 
 		@property
 		def formatted_text(self):
-			return self.fmt.format("\n".join(self._text))
+			return "\n".join(self.fmt.format(self._text))
 
 		def calculate_length(self):
 			if self.text:
@@ -101,6 +104,7 @@ def vertical_stacking(cls, **config):
 			)
 			self.drawer.draw(offsetx=self.offsetx, offsety=self.offsety, width=self.width, height=self.height)
 
+		@expose_command()
 		def update(self, text):
 			if self.text == text:
 				return
@@ -199,7 +203,7 @@ class UnsavedChanges(widget.Image):
 		hook.subscribe.client_name_updated(self.hook_response)
 
 	def hook_response(self, *args, **kwargs):
-		self.cmd_update('~/Pictures/archlinux-logo-ff7f00.svg' if self.qtile.current_window and "*" in self.qtile.current_window.name and 'firefox' not in self.qtile.current_window.get_wm_class() else '~/Pictures/archlinux-logo-007fff.svg')
+		self.update('~/Pictures/archlinux-logo-ff7f00.svg' if self.qtile.current_window and "*" in self.qtile.current_window.name else '~/Pictures/archlinux-logo-007fff.svg')
 
 
 class AnalogClock(base._Widget, base.PaddingMixin):
@@ -338,7 +342,7 @@ class VGroupBox(base._Widget):
 		self.drawer.clear(self.background or self.bar.background)
 		for i, group in enumerate(self.qtile.groups):
 			if group.screen:
-				self.drawer.set_source_rgb(self.ol_curr if group.screen is self.qtile.current_screen else self.ol_other)
+				self.drawer.set_source_rgb(self.ol_curr if group.screen is self.bar.screen else self.ol_other)
 				self.drawer.fillrect(0, i * (self.width-self.gap), self.width, self.width)
 			self.drawer.set_source_rgb(self.bg_urgent if any(win.urgent for win in group.windows) else self.bg_overrides.get(group.name, (self.bg_normal, self.bg_empty))[1 if len(group.windows) == 0 else 0])
 			self.drawer.fillrect(self.gap, i*(self.width-self.gap) + self.gap, self.width - 2*self.gap, self.width - 2*self.gap)
@@ -357,8 +361,8 @@ class BetterBattery(base._TextBox, AsyncMixin):
 		('format_widget', "{percent:.0f}%", "format text to display in widget"),
 		('format_notif', "", "format text to display in notification"),
 		('critical_percent', 5, "percentage (0–100) where charge is considered critical"),
-		('low_percent', 20, "percentage (0–100) where charge is considered low"),
-		('high_percent', 85, "percentage (0–100) where charge is considered high"),
+		('low_percent', 30, "percentage (0–100) where charge is considered low"),
+		('high_percent', 70, "percentage (0–100) where charge is considered high"),
 		('foreground_low', '#ff7f00', "font color to use when charge is low"),
 		('foreground_high', '#007fff', "font color to use when charge is high"),
 		('hibernate_critical', True, "whether to hibernate (suspend-to-disk) when charge is critical"),

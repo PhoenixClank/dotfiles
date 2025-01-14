@@ -64,4 +64,5 @@ autoload -Uz run-help run-help-git
 alias help=run-help
 
 # aliases
-alias ls='ls --color=auto --group-directories-first -Gh'
+alias ls='ls --color=auto --group-directories-first -vGh'
+alias hexdump='hexdump -f ~/.config/hexdump'

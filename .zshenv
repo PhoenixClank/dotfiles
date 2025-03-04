@@ -38,3 +38,6 @@ export BEMENU_OPTS="-fiw -l 8 --scrollbar autohide --no-overlap --monitor all --
  --fb #000000bf --ff #bfbfbf\
  --hb #001f3fbf --hf #007fff\
  --scb #1f1f1fbf --scf #007fff"
+
+# shitty shit
+export VCPKG_DISABLE_METRICS=1

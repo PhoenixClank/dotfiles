@@ -4,7 +4,7 @@ systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY
 
 function run-once {
-	pgrep "$1" > /dev/null || $@
+	pgrep -f "$1" > /dev/null || $@
 }
 
 run-once .config/qtile/autoreload &

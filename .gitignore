@@ -7,6 +7,7 @@
 !LICENSE
 
 # include dotfiles in home folder
+!.xinitrc
 !.zprofile
 !.zshenv
 !.zshrc
@@ -20,19 +21,26 @@
 # include the following subdirectories of the config folder
 !.config/dunst/
 !.config/nvim/
+!.config/openbox/
 !.config/qtile/
 !.config/swaylock/
 
-# but exclude this compiled binary
+# but exclude these compiled binaries
+.config/openbox/autoreload
 .config/qtile/autoreload
 
-# include other Neovim configuration like this?
+# include the following parts of .local/share
 !.local/
 .local/*
 !.local/share/
 .local/share/*
+# nvim runtime, where extensions live
 !.local/share/nvim/
 .local/share/nvim/.netrwhist
+# this one theme I made for Openbox
+!.local/share/themes/
+.local/share/themes/*
+!.local/share/themes/sakura/
 
 # exclude general junk
 **/__pycache__/

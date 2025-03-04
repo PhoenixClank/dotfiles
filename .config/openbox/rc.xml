@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
+	<resistance>
+		<strength>8</strength>
+		<screen_edge_strength>16</screen_edge_strength>
+	</resistance>
+	<focus>
+		<focusNew>yes</focusNew>
+		<followMouse>no</followMouse>
+		<!-- the below only apply if followMouse is yes -->
+		<focusLast>yes</focusLast>
+		<underMouse>yes</underMouse>
+		<focusDelay>0</focusDelay>
+		<raiseOnFocus>yes</raiseOnFocus>
+	</focus>
+	<placement>
+		<policy>Smart</policy>
+		<center>yes</center>
+		<monitor>Active</monitor>
+		<primaryMonitor>Active</primaryMonitor>
+	</placement>
+	<theme>
+		<name>sakura</name>
+		<titleLayout>NLSMC</titleLayout>
+		<keepBorder>no</keepBorder>
+		<animateIconify>yes</animateIconify>
+		<font place="ActiveWindow">
+			<name>sans</name>
+			<size>8</size>
+			<weight>bold</weight>
+			<slant>normal</slant>
+		</font>
+		<font place="InactiveWindow">
+			<name>sans</name>
+			<size>8</size>
+			<weight>bold</weight>
+			<slant>normal</slant>
+		</font>
+		<font place="MenuHeader">
+			<name>sans</name>
+			<size>8</size>
+			<weight>bold</weight>
+			<slant>normal</slant>
+		</font>
+		<font place="MenuItem">
+			<name>sans</name>
+			<size>8</size>
+			<weight>normal</weight>
+			<slant>normal</slant>
+		</font>
+		<font place="ActiveOnScreenDisplay">
+			<name>sans</name>
+			<size>12</size>
+			<weight>bold</weight>
+			<slant>normal</slant>
+		</font>
+		<font place="InactiveOnScreenDisplay">
+			<name>sans</name>
+			<size>12</size>
+			<weight>bold</weight>
+			<slant>normal</slant>
+		</font>
+	</theme>
+	<desktops>
+		<number>1</number>
+		<firstdesk>1</firstdesk>
+		<names>
+			<name>Openbox</name>
+		</names>
+		<popupTime>500</popupTime>
+	</desktops>
+	<resize>
+		<drawContents>yes</drawContents>
+		<popupShow>Nonpixel</popupShow>
+		<popupPosition>Center</popupPosition>
+	</resize>
+	<margins>
+		<top>0</top>
+		<bottom>0</bottom>
+		<left>0</left>
+		<right>0</right>
+	</margins>
+	<keyboard>
+		<keybind key="A-F4">
+			<action name="Close"/>
+		</keybind>
+		<keybind key="A-Tab">
+			<action name="NextWindow">
+				<dialog>list</dialog>
+				<bar>no</bar>
+				<raise>no</raise>
+				<allDesktops>no</allDesktops>
+				<panels>no</panels>
+				<desktop>no</desktop>
+				<linear>no</linear>
+				<interactive>yes</interactive>
+				<finalactions>
+					<action name="Focus"/>
+					<action name="Raise"/>
+					<action name="Unshade"/>
+				</finalactions>
+			</action>
+		</keybind>
+		<keybind key="W-t">
+			<action name="Execute">
+				<command>kitty</command>
+			</action>
+		</keybind>
+		<keybind key="W-f">
+			<action name="Execute">
+				<!-- TODO: maybe, someday, my own file browser -->
+				<command>pcmanfm-qt</command>
+			</action>
+		</keybind>
+		<keybind key="W-e">
+			<action name="Execute">
+				<command>nvim-qt</command>
+			</action>
+		</keybind>
+		<keybind key="W-b">
+			<action name="Execute">
+				<command>firefox</command>
+			</action>
+		</keybind>
+		<keybind key="W-p">
+			<action name="Execute">
+				<command>~/tor-browser-prompt</command>
+			</action>
+		</keybind>
+		<keybind key="W-q">
+			<action name="Execute">
+				<command>kitty bpytop</command>
+			</action>
+		</keybind>
+		<!--TODO: volume/brightness keys-->
+		<keybind key="W-Print">
+			<action name="Execute">
+				<command>sh -c "shotgun Pictures/Screenshots/$(date --iso-8601=ns).png"</command>
+			</action>
+		</keybind>
+		<keybind key="W-r">
+			<action name="Execute">
+				<command>bemenu-run</command>
+			</action>
+		</keybind>
+		<keybind key="A-C-r">
+			<action name="Reconfigure"/>
+		</keybind>
+		<keybind key="A-C-q">
+			<action name="Exit">
+				<prompt>no</prompt>
+			</action>
+		</keybind>
+	</keyboard>
+	<mouse>
+		<dragThreshold>1</dragThreshold>
+		<doubleClickTime>250</doubleClickTime>
+		<screenEdgeWarpTime>500</screenEdgeWarpTime>
+		<screenEdgeWarpMouse>false</screenEdgeWarpMouse>
+		<context name="Frame">
+			<mousebind button="A-Left" action="Press">
+				<action name="Focus"/>
+				<action name="Raise"/>
+			</mousebind>
+			<mousebind button="A-Left" action="Drag">
+				<action name="Move"/>
+			</mousebind>
+			<mousebind button="A-Right" action="Press">
+				<action name="Focus"/>
+				<action name="Raise"/>
+				<action name="Unshade"/>
+			</mousebind>
+			<mousebind button="A-Right" action="Drag">
+				<action name="Resize">
+					<edge>bottomright</edge>
+				</action>
+			</mousebind> 
+			<mousebind button="A-Middle" action="Click">
+				<action name="Close"/>
+			</mousebind>
+		</context>
+		<context name="Titlebar">
+			<mousebind button="Left" action="Drag">
+				<action name="Move"/>
+			</mousebind>
+			<mousebind button="Left" action="DoubleClick">
+				<action name="ToggleMaximize"/>
+			</mousebind>
+			<mousebind button="Right" action="Click">
+				<action name="ShowMenu">
+					<menu>client-menu</menu>
+				</action>
+			</mousebind>
+		</context>
+		<context name="Titlebar Top Right Bottom Left TLCorner TRCorner BRCorner BLCorner">
+			<mousebind button="Left" action="Press">
+				<action name="Focus"/>
+				<action name="Raise"/>
+			</mousebind>
+			<mousebind button="Right" action="Press">
+				<action name="Focus"/>
+				<action name="Raise"/>
+			</mousebind>
+			<mousebind button="Middle" action="Press">
+				<action name="Focus"/>
+				<action name="Raise"/>
+			</mousebind>
+			<mousebind button="Button6" action="Press">
+				<action name="Focus"/>
+				<action name="Raise"/>
+			</mousebind>
+			<mousebind button="Button7" action="Press">
+				<action name="Focus"/>
+				<action name="Raise"/>
+			</mousebind>
+			<mousebind button="Button8" action="Press">
+				<action name="Focus"/>
+				<action name="Raise"/>
+			</mousebind>
+			<mousebind button="Button9" action="Press">
+				<action name="Focus"/>
+				<action name="Raise"/>
+			</mousebind>
+		</context>
+		<context name="Top">
+			<mousebind button="Left" action="Drag">
+				<action name="Unshade"/>
+				<action name="Resize">
+					<edge>top</edge>
+				</action>
+			</mousebind>
+		</context>
+		<context name="Left">
+			<mousebind button="Left" action="Drag">
+				<action name="Unshade"/>
+				<action name="Resize">
+					<edge>left</edge>
+				</action>
+			</mousebind>
+		</context>
+		<context name="Right">
+			<mousebind button="Left" action="Drag">
+				<action name="Unshade"/>
+				<action name="Resize">
+					<edge>right</edge>
+				</action>
+			</mousebind>
+		</context>
+		<context name="Bottom">
+			<mousebind button="Left" action="Drag">
+				<action name="Unshade"/>
+				<action name="Resize">
+					<edge>bottom</edge>
+				</action>
+			</mousebind>
+		</context>
+		<context name="TRCorner">
+			<mousebind button="Left" action="Drag">
+				<action name="Unshade"/>
+				<action name="Resize">
+					<edge>topright</edge>
+				</action>
+			</mousebind>
+		</context>
+		<context name="TLCorner">
+			<mousebind button="Left" action="Drag">
+				<action name="Unshade"/>
+				<action name="Resize">
+					<edge>topleft</edge>
+				</action>
+			</mousebind>
+		</context>
+		<context name="BRCorner">
+			<mousebind button="Left" action="Drag">
+				<action name="Unshade"/>
+				<action name="Resize">
+					<edge>bottomright</edge>
+				</action>
+			</mousebind>
+		</context>
+		<context name="BLCorner">
+			<mousebind button="Left" action="Drag">
+				<action name="Unshade"/>
+				<action name="Resize">
+					<edge>bottomleft</edge>
+				</action>
+			</mousebind>
+		</context>
+		<context name="Client">
+			<mousebind button="Left" action="Press">
+				<action name="Focus"/>
+				<action name="Raise"/>
+			</mousebind>
+			<mousebind button="Middle" action="Press">
+				<action name="Focus"/>
+				<action name="Raise"/>
+			</mousebind>
+			<mousebind button="Right" action="Press">
+				<action name="Focus"/>
+				<action name="Raise"/>
+			</mousebind>
+			<mousebind button="Button6" action="Press">
+				<action name="Focus"/>
+				<action name="Raise"/>
+			</mousebind>
+			<mousebind button="Button7" action="Press">
+				<action name="Focus"/>
+				<action name="Raise"/>
+			</mousebind>
+			<mousebind button="Button8" action="Press">
+				<action name="Focus"/>
+				<action name="Raise"/>
+			</mousebind>
+			<mousebind button="Button9" action="Press">
+				<action name="Focus"/>
+				<action name="Raise"/>
+			</mousebind>
+		</context>
+		<context name="Shade">
+			<mousebind button="Left" action="Click">
+				<action name="ToggleShade"/>
+				<action name="If">
+					<query target="default">
+						<shaded>no</shaded>
+					</query>
+					<then>
+						<action name="Focus"/>
+						<action name="Raise"/>
+					</then>
+				</action>
+			</mousebind>
+		</context>
+		<context name="Maximize">
+			<mousebind button="Left" action="Click">
+				<action name="ToggleMaximize"/>
+				<action name="Focus"/>
+				<action name="Raise"/>
+			</mousebind>
+		</context>
+		<context name="Close">
+			<mousebind button="Left" action="Click">
+				<action name="Close"/>
+			</mousebind>
+		</context>
+		<context name="Root">
+			<mousebind button="Right" action="Press">
+				<action name="ShowMenu">
+					<menu>menu</menu>
+				</action>
+			</mousebind>
+		</context>
+	</mouse>
+	<menu>
+		<hideDelay>-1</hideDelay>
+		<middle>no</middle>
+		<submenuShowDelay>0</submenuShowDelay>
+		<submenuHideDelay>0</submenuHideDelay>
+		<showIcons>yes</showIcons>
+		<manageDesktops>no</manageDesktops>
+	</menu>
+</openbox_config>

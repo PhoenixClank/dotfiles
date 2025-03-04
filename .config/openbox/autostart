@@ -1,0 +1,4 @@
+pgrep -f .config/openbox/autoreload > /dev/null || .config/openbox/autoreload &
+xwallpaper --zoom "Pictures/fanart/Arch-tan packages – Glowing Brick.png"
+pgrep -f dunst > /dev/null || dunst &
+pgrep batterywarn > /dev/null || batterywarn &

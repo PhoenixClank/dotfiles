@@ -1,7 +1,7 @@
 import asyncio
 import random
 
-from dbus_next.aio import MessageBus
+from dbus_fast.aio import MessageBus
 
 
 _bus = None

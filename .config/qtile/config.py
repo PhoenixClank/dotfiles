@@ -5,7 +5,7 @@ import random
 import subprocess
 import time
 
-from dbus_next import Variant
+from dbus_fast import Variant
 
 import psutil
 
@@ -27,7 +27,7 @@ import mywidgets
 wmname = 'LG3D'
 
 
-@hook.subscribe.startup_once
+@hook.subscribe.startup
 def startup(*args):
 	subprocess.call(['~/.config/qtile/autostart'], shell=True)
 
@@ -116,7 +116,6 @@ keys = [
 	# TODO: MPRIS
 
 	Key([wm, 'control'], 'r', lazy.reload_config(), desc="reload qtile"),  # TODO: replace with inotify listener to automatically reload the config whenever it changes
-	Key([wm, 'control'], 'h', lazy.spawn('systemctl hibernate'), desc="hibernate (suspend-to-disk)"),
 	Key([wm, 'control'], 'q', lazy.shutdown(), desc="exit qtile"),
 ]
 if qtile.core.name == "wayland": keys += [
@@ -196,7 +195,7 @@ dgroups_app_rules = []  # type: list
 groups = [
 	Group("comms", exclusive=True, matches=[  # TODO: get a mail client that can minimize to tray, make this group non-exclusive
 		Match(wm_class='thunderbird'),
-		#Match(func=lambda win: win.floating),
+		Match(func=lambda win: win.floating),
 	]),
 	Group("dual screen enabler"),
 ]

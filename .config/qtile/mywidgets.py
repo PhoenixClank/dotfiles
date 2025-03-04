@@ -7,8 +7,8 @@ import os
 import sys
 import traceback as tb
 
-from dbus_next import Variant
-from dbus_next.aio import MessageBus
+from dbus_fast import Variant
+from dbus_fast.aio import MessageBus
 
 import psutil
 

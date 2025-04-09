@@ -27,7 +27,7 @@ import mywidgets
 wmname = 'LG3D'
 
 
-@hook.subscribe.startup
+@hook.subscribe.startup_once
 def startup(*args):
 	subprocess.call(['~/.config/qtile/autostart'], shell=True)
 
@@ -100,7 +100,7 @@ keys = [
 	Key([launch], 'e', lazy.spawn('nvim-qt'), desc="text [E]ditor"),
 	Key([launch], 'a', lazy.spawn('pavucontrol-qt'), desc="Pulse[A]udio settings"),
 	Key([launch], 'q', lazy.spawn('kitty bpytop'), desc="task manager (not [Q]ps)"),
-	Key([launch], 'b', lazy.spawn('firefox'), desc="web [B]rowser"),
+	Key([launch], 'b', lazy.spawn('librewolf'), desc="web [B]rowser"),
 	Key([launch], 'p', lazy.spawn('/home/felix/tor-browser-prompt'), desc="[P]rivacy-centric web browser (Tor Browser)"),
 	Key([launch], 'k', lazy.spawn('keepassxc'), desc="password manager ([K]eePassXC)"),
 	Key([launch], 's', lazy.spawn('signal-desktop --ozone-platform=wayland'), desc="show the [S]ignal window"),
@@ -325,7 +325,7 @@ screens = [
 			MultiCpuGraph(length=16, colors=['#ff0000', '#ff7f00', '#ffff00', '#7fff00', '#00ff00', '#00ff7f', '#00ffff', '#007fff', '#0000ff', '#7f00ff', '#ff00ff', '#ff007f']),
 			mywidgets.vertical_short(mywidgets.BetterBattery, low_percent=15, high_percent=90),
 			#mywidgets.MprisAllPlayersController(notify=False),  # TODO: mouse click callbacks
-			widget.StatusNotifier(padding=2),
+			widget.StatusNotifier(padding=4),
 			mywidgets.vertical_stacking(widget.CurrentLayout),
 			#widget.Spacer(background=['#000000bf', '#0000003f']),  # TODO: remove this once gradient works for the whole bar again
 		], 24, background='#000000bf'),

@@ -119,7 +119,7 @@
 		</keybind>
 		<keybind key="W-b">
 			<action name="Execute">
-				<command>firefox</command>
+				<command>librewolf</command>
 			</action>
 		</keybind>
 		<keybind key="W-p">

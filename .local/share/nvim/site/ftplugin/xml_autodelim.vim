@@ -5,7 +5,7 @@ if exists("b:loaded_xml_autodelim")
 endif
 let b:loaded_xml_autodelim = 1
 
-inoremap <buffer> <lt> <lt><Space>/><Left><Left><BS>
+inoremap <buffer> <lt> ><Left>/<Left><lt>
 inoremap <buffer> <expr> / <SID>Slash()
 inoremap <buffer> <expr> ? <Sid>Question()
 inoremap <buffer> <expr> ! <SID>Bang()

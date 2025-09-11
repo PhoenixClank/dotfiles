@@ -5,9 +5,9 @@ if exists("g:loaded_autodelim")
 endif
 let g:loaded_autodelim = 1
 
-inoremap ( ()<Left>
-inoremap [ []<Left>
-inoremap { {}<Left>
+inoremap ( )<Left>(
+inoremap [ ]<Left>[
+inoremap { }<Left>{
 
 inoremap <expr> } <SID>MaybeSkip("}")
 inoremap <expr> ] <SID>MaybeSkip("]")
@@ -34,11 +34,11 @@ function s:DoubleQuote()
 		return "\""
 	elseif l:line[l:col-1] == "\""
 		if l:line[l:col-2] == "\""
-			return "\"\"\"\"\<Left>\<Left>"
+			return "\"\"\<Left>\"\<Left>\""
 		endif
 		return "\<Right>"
 	endif
-	return "\"\"\<Left>"
+	return "\"\<Left>\""
 endfunction
 
 function s:Remove()
@@ -56,7 +56,7 @@ function s:LineBreak()
 	let l:line = getline(".")
 	let l:col = col(".")
 	if l:line[l:col-2 : l:col-1] == "()" || l:line[l:col-2 : l:col-1] == "[]" || l:line[l:col-2 : l:col-1] == "{}"
-		return "\<Enter>\<Tab>\<Enter>\<Up>\<Right>"
+		return "\<Enter>\<Up>\<End>\<Enter>"
 	endif
 	return "\<Enter>"
 endfunction

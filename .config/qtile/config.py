@@ -101,7 +101,7 @@ keys = [
 	Key([launch], 'a', lazy.spawn('pavucontrol-qt'), desc="Pulse[A]udio settings"),
 	Key([launch], 'q', lazy.spawn('kitty bpytop'), desc="task manager (not [Q]ps)"),
 	Key([launch], 'b', lazy.spawn('librewolf'), desc="web [B]rowser"),
-	Key([launch], 'p', lazy.spawn('/home/felix/tor-browser-prompt'), desc="[P]rivacy-centric web browser (Tor Browser)"),
+	Key([launch], 'p', lazy.spawn('tor-browser-prompt'), desc="[P]rivacy-centric web browser (Tor Browser)"),
 	Key([launch], 'k', lazy.spawn('keepassxc'), desc="password manager ([K]eePassXC)"),
 	Key([launch], 's', lazy.spawn('signal-desktop --ozone-platform=wayland'), desc="show the [S]ignal window"),
 	Key([launch], 'r', lazy.spawn('bemenu-run'), desc="[R]un"),
@@ -195,7 +195,7 @@ dgroups_app_rules = []  # type: list
 groups = [
 	Group("comms", exclusive=True, matches=[  # TODO: get a mail client that can minimize to tray, make this group non-exclusive
 		Match(wm_class='thunderbird'),
-		Match(func=lambda win: win.floating),
+		#Match(func=lambda win: win.floating),
 	]),
 	Group("dual screen enabler"),
 ]
@@ -282,6 +282,12 @@ class MultiNetGraph(mywidgets._MultiGraph):
 		stat = psutil.net_io_counters(pernic=True)
 		dDn = stat['eno1'].bytes_recv + stat['wlan0'].bytes_recv - self.dn
 		dUp = stat['eno1'].bytes_sent + stat['wlan0'].bytes_sent - self.up
+		if 'enp4s0f3u2' in stat:
+			dDn += stat['enp4s0f3u2'].bytes_recv
+			dUp += stat['enp4s0f3u2'].bytes_sent
+		if 'enp4s0f3u3' in stat:
+			dDn += stat['enp4s0f3u3'].bytes_recv
+			dUp += stat['enp4s0f3u3'].bytes_sent
 		self.dn += dDn
 		self.up += dUp
 		return dDn, dUp
@@ -344,14 +350,18 @@ screens = [
 			"Caldera Post.jpg",
 			"Cameron Crest.jpg",
 			"Daitoshi Station.jpg",
+			"Guangzhou + Mueller.jpg",
+			"Guangzhou + Willard.jpg",
 			"Iceland.png",
 			"Kenshu Jungle.jpg",
 			"keyshot (NEO).jpg",
 			"Kuiper Belt 1.png",
 			"Kuiper Belt 2.png",
+			"loopings.jpg",
 			"Mori Park.png",
 			"Mueller Pacific.jpg",
 			"New Zendling.png",
+			"parabolar antennae.jpg",
 			"Pyramid Valley.png",
 			"Scorpio Circuit.jpg",
 			"Sendai Outpost.jpg",

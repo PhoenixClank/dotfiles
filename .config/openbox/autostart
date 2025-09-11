@@ -1,4 +1,6 @@
-pgrep -f .config/openbox/autoreload > /dev/null || .config/openbox/autoreload &
+pgrep -f .config/openbox/autoreload >/dev/null || .config/openbox/autoreload &
+pgrep -f dunst >/dev/null || dunst &
+pgrep -f batterywarn >/dev/null || batterywarn &
+pgrep -f picom >/dev/null || picom &
 xwallpaper --zoom "Pictures/fanart/Arch-tan packages – Glowing Brick.png"
-pgrep -f dunst > /dev/null || dunst &
-pgrep batterywarn > /dev/null || batterywarn &
+#xwallpaper --zoom "$(python -c 'import glob; import random; print(random.choice(glob.glob("Pictures/**/* (* × *).png", recursive=True)))')"

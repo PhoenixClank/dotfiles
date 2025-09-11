@@ -1,0 +1,36 @@
+{
+	"output": "eDP-1",
+	"position": "left",
+	"width": 24,
+	"modules-left": [
+		"clock",
+		"battery",
+		"sway/workspaces",
+		"tray"
+	],
+	"clock": {
+		"format": "{:%m\n%d\n%H\n%M}"  // Why does it have to start with a colon?
+	},
+	"battery": {
+		"bat": "BAT1",
+		"interval": 15,
+		"format": "{capacity}",
+		"states": {
+			"normal": 90,
+			"low": 15
+		}
+	},
+	"sway/workspaces": {
+		"all-outputs": true,
+		"disable-scroll": true,
+		"format": "{icon}",
+		"format-icons": {
+			"default": "-",
+			"focused": ">"
+		},
+		"disable-markup": true
+		//"rotate": 270
+		//"format-window-separator": ""
+	},
+	"reload_style_on_change": true
+}

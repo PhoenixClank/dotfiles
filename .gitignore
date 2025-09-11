@@ -24,10 +24,13 @@
 
 # include the following subdirectories of the config folder
 !.config/nvim/
+!.config/fastfetch/
 !.config/dunst/
-!.config/swaylock/
 !.config/sway/
 !.config/qtile/
+!.config/swaylock/
+!.config/waybar/
+!.config/swayimg/
 !.config/openbox/
 
 # but exclude these compiled binaries

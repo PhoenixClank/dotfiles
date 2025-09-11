@@ -1,0 +1,105 @@
+[general]
+overlay = no
+size = image
+decoration = yes
+
+[viewer]
+window = #404040ff
+antialiasing = bicubic
+
+[list]
+all = yes
+order = numeric
+
+[font]
+name = Noto Sans
+size = 12
+color = #ffffffff
+background = #ff3fdfbf
+shadow = #000000ff
+
+[info]
+show = no
+info_timeout = 0
+
+[info.viewer]
+top_left = none
+top_right = none
+bottom_left = name,imagesize,format,scale
+bottom_right = none
+
+[keys.viewer]
+Right = next_file
+Left = prev_file
+Space = animation
+Up = zoom +10
+Down = zoom -10
+w = step_up
+a = step_left
+s = step_down
+d = step_right
+i = info
+f = fullscreen
+z = zoom optimal
+o = zoom real
+q = exit
+# disable literally all other keys on my keyboard {{{
+Escape = none
+F1 = none
+F2 = none
+F3 = none
+F4 = none
+F5 = none
+F6 = none
+F7 = none
+F8 = none
+F9 = none
+F10 = none
+F11 = none
+F12 = none
+Delete = none
+Home = none
+End = none
+Prior = none
+Next = none
+asciicircum = none
+1 = none
+2 = none
+3 = none
+4 = none
+5 = none
+6 = none
+7 = none
+8 = none
+9 = none
+0 = none
+ssharp = none
+BackSpace = none
+Tab = none
+e = none
+r = none
+t = none
+u = none
+p = none
+udiaresis = none
+plus = none
+numbersign = none
+g = none
+h = none
+j = none
+k = none
+l = none
+odiaresis = none
+adiaresis = none
+Return = none
+y = none
+x = none
+v = none
+b = none
+n = none
+m = none
+comma = none
+period = none
+minus = none
+less = none
+# }}}

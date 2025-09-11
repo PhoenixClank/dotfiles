@@ -1,0 +1,9 @@
+# configuration for stuff that doesn’t use config files
+export GTK_THEME=Adwaita:dark
+export BEMENU_OPTS="-fiw -l 8 --scrollbar autohide --no-overlap --monitor all --fn \"Noto Sans 10\" --margin 0 --border 0 --border-radius 0\
+ --nb #000000bf --nf #bfbfbf\
+ --ab #1f1f1fbf --af #bfbfbf\
+ --tb #000000bf --tf #007fff\
+ --fb #000000bf --ff #bfbfbf\
+ --hb #001f3fbf --hf #007fff\
+ --scb #1f1f1fbf --scf #007fff"

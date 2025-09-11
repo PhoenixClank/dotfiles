@@ -1,3 +1,5 @@
+fastfetch
+
 run_further=true
 graphical_session=true
 
@@ -66,7 +68,8 @@ fi
 
 # finally, start graphical session
 if $graphical_session ; then
-	mv -f .local/share/qtile/qtile.log .local/share/qtile/qtile.log.prev
-	mv -f .local/share/qtile/qtile.run .local/share/qtile/qtile.run.prev
-	qtile start -b wayland > .local/share/qtile/qtile.run 2>&1
+	#mv -f .local/share/qtile/qtile.log .local/share/qtile/qtile.log.prev
+	#mv -f .local/share/qtile/qtile.run .local/share/qtile/qtile.run.prev
+	#qtile start -b wayland > .local/share/qtile/qtile.run 2>&1
+	./.swayenv
 fi

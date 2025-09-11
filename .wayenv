@@ -1,0 +1,14 @@
+#!/usr/bin/zsh
+
+# pull in other configuration
+source .graphicalenv
+
+# enable Wayland
+export SDL_VIDEODRIVER=wayland
+export SDL_DYNAMIC_API=/usr/lib64/libSDL2-2.0.so
+export CLUTTER_BACKEND=wayland
+export MOZ_ENABLE_WAYLAND=1
+export _JVM_AWT_WM_NONREPARENTING=1
+
+# configuration for stuff that doesn’t use config files
+export GRIM_DEFAULT_DIR=~/Pictures/Screenshots

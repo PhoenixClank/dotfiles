@@ -1,0 +1,10 @@
+#!/usr/bin/zsh
+
+source .wayenv
+
+export XDG_CURRENT_DESKTOP=qtile
+
+mv -f .local/share/qtile/qtile.run .local/share/qtile/qtile.run.prev
+qtile start -b wayland >.local/share/qtile/qtile.run 2>&1
+
+pkill autoreload

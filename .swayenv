@@ -1,0 +1,18 @@
+#!/usr/bin/zsh
+
+# pull in other configuration
+source .wayenv
+
+# set Sway-specific configuration
+export XDG_CURRENT_DESKTOP=sway
+
+# needed for scripts ran from the sway config
+export notif_id_brightness=0
+export notif_id_volume=0
+
+# actually run Sway, without cluttering the tty
+mv -f .local/share/sway/sway.run .local/share/sway/sway.run.prev
+sway >.local/share/sway/sway.run 2>&1
+
+# clean up background processes that don’t end when Sway exits
+pkill batterywarn

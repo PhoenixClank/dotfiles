@@ -7,10 +7,14 @@
 !LICENSE
 
 # include dotfiles in home folder
-!.xinitrc
-!.zprofile
 !.zshenv
 !.zshrc
+!.zlogin
+!.graphicalenv
+!.wayenv
+!.swayenv
+!.qtileenv
+!.xinitrc
 
 # include config folder
 !.config/
@@ -19,11 +23,12 @@
 .config/*
 
 # include the following subdirectories of the config folder
-!.config/dunst/
 !.config/nvim/
-!.config/openbox/
-!.config/qtile/
+!.config/dunst/
 !.config/swaylock/
+!.config/sway/
+!.config/qtile/
+!.config/openbox/
 
 # but exclude these compiled binaries
 .config/openbox/autoreload

@@ -19,6 +19,7 @@ set $webbrowser librewolf
 set $privacybrowser tor-browser-prompt
 set $instantmessenger signal-desktop
 set $taskmanager kitty bpytop
+set $screenshot grim
 # my preferred application launcher
 set $menu bemenu-run
 # }}}
@@ -99,6 +100,8 @@ bindsym $launch+p exec $privacybrowser
 bindsym $launch+k exec keepassxc
 bindsym $launch+s exec $instantmessenger
 bindsym $launch+q exec $taskmanager
+
+bindsym $launch+Print exec $screenshot
 
 bindsym $launch+x exec xeyes
 

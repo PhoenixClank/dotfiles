@@ -22,7 +22,7 @@
 # exclude everything in config folder
 .config/*
 
-# include the following subdirectories of the config folder
+# include the following subdirectories and files of the config folder
 !.config/nvim/
 !.config/fastfetch/
 !.config/dunst/
@@ -32,6 +32,7 @@
 !.config/waybar/
 !.config/swayimg/
 !.config/openbox/
+!.config/tor-browser-prompt
 
 # but exclude these compiled binaries
 .config/openbox/autoreload

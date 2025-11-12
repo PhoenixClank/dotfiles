@@ -1,0 +1,38 @@
+#!/usr/bin/zsh
+
+float PERCENT_CRIT=10
+float PERCENT_LOW=20
+float PERCENT_HIGH=90
+
+float percent
+integer value
+
+id_low=0
+notified_hi=false
+status_prev=$(</sys/class/power_supply/BAT1/status)
+while true ; do
+	percent=$(( $(</sys/class/power_supply/BAT1/charge_now) * 100. / $(</sys/class/power_supply/BAT1/charge_full) ))
+	value=$percent
+	batstat=$(</sys/class/power_supply/BAT1/status)
+	if [[ $batstat != $status_prev ]] ; then
+		dunstify -a battery "status changed" "$status_prev → $batstat"
+		status_prev=$batstat
+	fi
+	if (( $percent <= $PERCENT_CRIT )) && [[ $batstat == "Discharging" ]] ; then
+		systemctl hibernate
+	elif (( $percent <= $PERCENT_LOW )) && [[ $batstat == "Discharging" ]] ; then
+		id_low=$(dunstify -p -r $id_low -u 2 -a battery low -h "int:value:$value")
+	elif (( $percent >= $PERCENT_HIGH )) && [[ $batstat == "Charging" ]] ; then
+		if ! $notified_hi ; then
+			dunstify -a battery high -h "int:value:$value"
+			notified_hi=true
+		fi
+	else
+		notified_hi=false
+		if [[ $id_low != 0 ]] ; then
+			dunstify -C $id_low
+			id_low=0
+		fi
+	fi
+	sleep 15s
+done

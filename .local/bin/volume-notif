@@ -1,0 +1,40 @@
+#!/bin/zsh
+
+vol=$(wpctl get-volume '@DEFAULT_SINK@')
+typeset -i value
+case $1 in
+	down)
+		if [[ ${vol: -7} == '[MUTED]' ]]; then
+			export notif_id_volume=$(notify-send -p -r $notif_id_volume -a audio muted -t 1500)
+		else
+			wpctl set-volume '@DEFAULT_SINK@' 5%-
+			vol=$(wpctl get-volume '@DEFAULT_SINK@')
+			value=$(( ${vol:8} * 100))
+			export notif_id_volume=$(notify-send -p -r $notif_id_volume -a audio volume -h int:value:$value -t 1500)
+		fi
+		;;
+	up)
+		if [[ ${vol: -7} == '[MUTED]' ]]; then
+			wpctl set-mute '@DEFAULT_SINK@' 0
+			value=$(( ${vol:8:-8} * 100 ))
+			export notif_id_volume=$(notify-send -p -r $notif_id_volume -a audio unmuted -h int:value:$value -t 1500)
+		else
+			wpctl set-volume '@DEFAULT_SINK@' 5%+
+			vol=$(wpctl get-volume '@DEFAULT_SINK@')
+			value=$(( ${vol:8} * 100))
+			export notif_id_volume=$(notify-send -p -r $notif_id_volume -a audio volume -h int:value:$value -t 1500)
+		fi
+		;;
+	mute)
+		if [[ ${vol: -7} == '[MUTED]' ]]; then
+			wpctl set-mute '@DEFAULT_SINK@' 0
+			value=$(( ${vol:8:-8} * 100 ))
+			export notif_id_volume=$(notify-send -p -r $notif_id_volume -a audio unmuted -h int:value:$value -t 1500)
+		else
+			wpctl set-mute '@DEFAULT_SINK@' 1
+			export notif_id_volume=$(notify-send -p -r $notif_id_volume -a audio muted -t 1500)
+		fi
+		;;
+	*)
+		exit 1
+esac

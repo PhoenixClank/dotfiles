@@ -1,0 +1,12 @@
+#!/bin/sh
+
+case $1 in
+	down)
+		export notif_id_brightness=$(notify-send -p -r $notif_id_brightness -a backlight brightness -h int:value:$(brightnessctl -m set 5%- | jq -R '[split(",")[2, 4] | tonumber] | .[0]*100 / .[1] | round') -t 1500)
+		;;
+	up)
+		export notif_id_brightness=$(notify-send -p -r $notif_id_brightness -a backlight brightness -h int:value:$(brightnessctl -m set 5%+ | jq -R '[split(",")[2, 4] | tonumber] | .[0]*100 / .[1] | round') -t 1500)
+		;;
+	*)
+		exit 1
+esac

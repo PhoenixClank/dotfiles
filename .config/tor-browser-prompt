@@ -1,0 +1,30 @@
+shortcuts+=(
+	# explain stuff to me
+	[wpen]="https://en.wikipedia.org/wiki/Main_Page https://en.wikipedia.org/w/index.php?title=Special:Search&search={searchTerms}"
+	[wpde]="https://de.wikipedia.org/wiki/Wikipedia:Hauptseite https://de.wikipedia.org/w/index.php?title=Spezial:Suche&search={searchTerms}"
+	[wken]="https://en.wiktionary.org/wiki/Wiktionary:Main_Page https://en.wiktionary.org/w/index.php?title=Special:Search&search={searchTerms}"
+	[wkde]="https://de.wiktionary.org/wiki/Wiktionary:Hauptseite https://de.wiktionary.org/w/index.php?title=Spezial:Suche&search={searchTerms}"
+	[howto]="https://www.wikihow.com/Main-Page https://www.wikihow.com/wikiHowTo?search={searchTerms}"
+	[ud]="https://www.urbandictionary.com/ https://www.urbandictionary.com/define.php?term={searchTerms}"
+	[kym]="https://knowyourmeme.com/ https://knowyourmeme.com/"  # maybe one day KYM will get an opensearch description
+	# system maintenance and development
+	[arch]="https://wiki.archlinux.org/title/Main_page https://wiki.archlinux.org/index.php?title=Special:Search&search={searchTerms}"
+	[apps]="https://wiki.archlinux.org/title/List_of_applications https://wiki.archlinux.org/title/List_of_applications"
+	[aur]="https://aur.archlinux.org/ https://aur.archlinux.org/packages?K={searchTerms}"
+	[py]="https://docs.python.org/3/library/index.html https://docs.python.org/3/library/index.html"
+	[mdn]="https://developer.mozilla.org/ https://developer.mozilla.org/search?q={searchTerms}"
+	# YouTube
+	[yt]="https://www.youtube.com/ https://www.youtube.com/results?search_query={searchTerms}&utm_source=opensearch"
+	# special interest search engines
+	[vt]="https://virtualyoutuber.fandom.com/wiki/Virtual_YouTuber_Wiki https://virtualyoutuber.fandom.com/wiki/Special:Search?search={searchTerms}"
+	[ink]="https://splatoonwiki.org/wiki/Main_Page https://splatoonwiki.org/w/index.php?title=Special:Search&search={searchTerms}"
+	[mc]="https://minecraft.wiki/ https://minecraft.wiki/w/Special:Search?search={searchTerms}"
+	[poke]="https://bulbapedia.bulbagarden.net/wiki/Main_Page https://bulbapedia.bulbagarden.net/w/index.php?title=Special:Search&search={searchTerms}"
+	[bio]="https://biosector01.com/wiki/Main_Page https://biosector01.com/w/index.php?title?Special:Search&search={searchTerms}"
+	[h]="https://nhentai.net/ https://nhentai.net/g/{searchTerms}"
+	# bookmarks
+	[hq]="https://siivagunner.wiki/wiki/SiIvaGunner_Wiki https://siivagunner.wiki/wiki/SiIvaGunner_Wiki"  # TODO: move one section higher
+	[bi]="https://www.lego.com/en-us/service/buildinginstructions https://www.lego.com/en-us/service/buildinginstructions"
+	[bl]="https://www.bricklink.com/v2/main.page https://www.bricklink.com/v2/main.page"
+	[ao3]="https://archiveofourown.org/ https://archiveofourown.org/"
+)

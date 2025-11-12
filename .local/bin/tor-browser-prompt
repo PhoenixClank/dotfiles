@@ -1,0 +1,88 @@
+#!/usr/bin/zsh
+
+# Change this line so the script goes to your Tor Browser install directory.
+# The Tor Browser install directory contains exactly two things:
+# - a directory called “Browser/”
+# - a file called “start-tor-browser.desktop”
+cd Stuff/tor-browser_en-US
+
+# uncomment the one you prefer
+OPEN_NEW=tab
+#OPEN_NEW=window
+
+DEFAULT_URL='about:tor'
+
+# uncomment to skip the prompt
+#./start-tor-browser.desktop --allow-remote --new-$OPEN_NEW $DEFAULT_URL; exit
+
+
+typeset -A shortcuts
+# format: [shortcut]="homepage opensearchurl"
+# XXX: it must be two urls, separated by a single ascii space
+# for simple bookmarks, the urls may be identical
+shortcuts=(
+	[search]="http://startpagel6srwcjlue4zgq3zevrujfaow726kjytqbbjyrswwmjzcqd.onion/ http://startpagel6srwcjlue4zgq3zevrujfaow726kjytqbbjyrswwmjzcqd.onion/sp/search?query={searchTerms}&cat=web&pl=opensearch&language=english"
+	[wp]="https://en.wikipedia.org/wiki/Main_Page https://en.wikipedia.org/w/index.php?title=Special:Search&search={searchTerms}"
+	[maps]="https://www.openstreetmap.org/ https://www.openstreetmap.org/search?query={searchTerms}"
+)
+if [[ -v XDG_CONFIG_HOME ]] ; then
+	if [[ -f $XDG_CONFIG_HOME/tor-browser-prompt ]] ; then
+		source $XDG_CONFIG_HOME/tor-browser-prompt
+	elif [[ -f $XDG_CONFIG_HOME/tor-browser-prompt/config ]] ; then
+		source $XDG_CONFIG_HOME/tor-browser-prompt/config
+	fi
+elif [[ -f ~/.config/tor-browser-prompt ]] ; then
+	source ~/.config/tor-browser-prompt
+elif [[ -f ~/.config/tor-browser-prompt/config ]] ; then
+	source ~/.config/tor-browser-prompt/config
+fi
+
+#url=$(zenity --entry --text="URL or search query" --title="Tor Browser prompt" --window-icon="Browser/browser/chrome/icons/default/default128.png")
+url=$(print -n "" | bemenu --prompt="URL or search query")  # print nothing without newline into bemenu so it doesn’t display a list of options
+exit_status=$?
+
+# if the user clicked “cancel”, exit prematurely
+if [[ $exit_status != 0 ]] ; then
+	exit $exit_status
+fi
+
+case $url in
+	"")  # empty string
+		url=$DEFAULT_URL
+		;;
+	nt)  # just open a new tab
+		OPEN_NEW=tab
+		url=$DEFAULT_URL
+		;;
+	nw)  # just open a new window
+		OPEN_NEW=window
+		url=$DEFAULT_URL
+		;;
+	nt\ *)  # open the following in a new tab
+		OPEN_NEW=tab
+		url=${url:3}
+		;;
+	nw\ *)  # open the following in a new window
+		OPEN_NEW=window
+		url=${url:3}
+		;;
+esac
+
+
+function url-encode {
+	python -c "import urllib.parse; print(urllib.parse.quote_plus('${1//'/\\'}'), end = '')"
+}
+
+if [[ -v shortcuts[${url%% *}] ]] ; then
+	pair=(${(ps: :)shortcuts[${url%% *}]})
+	if [[ $url = *\ * ]] ; then
+		url=${pair[2]//'{searchTerms}'/$(url-encode ${url#* })}
+	else
+		url=$pair[1]
+	fi
+elif [[ $url = *\ * || ( $url != *?.??* && $url != about:?* ) ]] ; then
+	pair=(${(ps: :)shortcuts[search]})
+	url=${pair[2]//'{searchTerms}'/$(url-encode $url)}
+fi
+
+./start-tor-browser.desktop --allow-remote --new-$OPEN_NEW $url

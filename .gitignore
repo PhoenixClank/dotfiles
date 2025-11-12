@@ -50,5 +50,14 @@
 .local/share/themes/*
 !.local/share/themes/sakura/
 
+# include the following executable scripts
+!.local/bin/
+.local/bin/*
+!.local/bin/batterywarn
+!.local/bin/brightness-notif
+!.local/bin/set-wallpaper
+!.local/bin/tor-browser-prompt
+!.local/bin/volume-notif
+
 # exclude general junk
 **/__pycache__/

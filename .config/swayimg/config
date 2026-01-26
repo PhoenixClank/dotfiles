@@ -28,19 +28,6 @@ top_right = none
 bottom_left = name,imagesize,format,scale
 bottom_right = none
 
-# witness my hacky way to turn one single info format on and off by cycling through all four
-[info.slideshow]
-top_left = none
-top_right = none
-bottom_left = none
-bottom_right = none
-
-[info.gallery]
-top_left = none
-top_right = none
-bottom_left = name,imagesize,format,scale
-bottom_right = none
-
 [keys.viewer]
 Right = next_file
 Left = prev_file
@@ -51,7 +38,7 @@ w = step_up
 a = step_left
 s = step_down
 d = step_right
-i = info
+i = info viewer,off
 f = fullscreen
 z = zoom optimal
 o = zoom real

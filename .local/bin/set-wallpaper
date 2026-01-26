@@ -1,9 +1,9 @@
 #!/usr/bin/zsh
 
-if pgrep sway; then
+if pgrep sway ; then
 	pkill swaybg
-	swaybg -i $1 -m fill
-elif pgrep qtile; then
+	exec swaybg -i $1 -m fill
+elif pgrep qtile ; then
 	qtile cmd-obj -o screen -f set_wallpaper -a $1 fill
 else
 	xwallpaper --zoom $1

@@ -70,7 +70,7 @@ esac
 
 
 function url-encode {
-	python -c "import urllib.parse; print(urllib.parse.quote_plus('${1//'/\\'}'), end = '')"
+	python -c "import urllib.parse; print(urllib.parse.quote('${1//'/\\'}').replace('%20', '+'))"
 }
 
 if [[ -v shortcuts[${url%% *}] ]] ; then
